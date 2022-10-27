@@ -2,3 +2,27 @@
   height: 100vh;
   width: 100vw;
 }
+.sendbird-channel-header__right-icon {
+  display: none;
+}
+/* .create-channel-button{
+  position: absolute;
+    right: 16px;
+    top: 16px;
+} */
+.create-channel-button {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  border: none;
+  display: block;
+  left: 280px;
+  top: 25px;
+  cursor: pointer;
+}
+.create-channel-button svg {
+  width: 20px;
+  height: 20px;
+}
