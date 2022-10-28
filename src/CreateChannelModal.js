@@ -44,6 +44,7 @@ function CreateChannelModal(props) {
       }
     }
     fetchUsers();
+
   }, []);
 
   const closeForm = () => {
@@ -77,7 +78,6 @@ function CreateChannelModal(props) {
         <h5 className="create-channel-member-count">{count < 1 ? 0 : count - 1} selected</h5>
         <div className="create_channel_wrap">
           <FormGroup className="user-select-form">
-
             {users.map((user) => {
               return (
                 <FormControlLabel
@@ -93,15 +93,14 @@ function CreateChannelModal(props) {
                 />
               )
             })}
-
           </FormGroup>
-          <Stack spacing={2} direction="row" className="button-container">
-            <Button variant="contained" onClick={createChannel}>Submit</Button>
-            <Button variant="outlined" onClick={closeForm}>
-              Cancel
-            </Button>
-          </Stack>
         </div>
+        <Stack spacing={2} direction="row" className="button-container">
+              <Button variant="contained" onClick={createChannel}>Submit</Button>
+              <Button variant="outlined" onClick={closeForm}>
+                Cancel
+              </Button>
+            </Stack>
       </div>
     </div>
   );
