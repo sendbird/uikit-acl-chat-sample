@@ -5,10 +5,15 @@ import SBChannelSettings from "@sendbird/uikit-react/ChannelSettings";
 import "@sendbird/uikit-react/dist/index.css";
 import CreateChannelModal from "./CreateChannelModal";
 import "./App.css";
+import {
+  sendBirdSelectors,
+  useSendbirdStateContext,
 
+} from "@sendbird/uikit-react";
 
 function App() {
   const USER_ID = "Bob_1";
+
   const query = useMemo(() => {
     return {
       channelListQuery: {
@@ -17,12 +22,20 @@ function App() {
     };
   }, []);
 
+  const [showChannelList, setShowChannelList] = useState(true);
+
+
   const [showSettings, setShowSettings] = useState(false);
   const [showCreateChannelModal, setShowCreateChannelModal] = useState(false);
   const [currentChannelUrl, setCurrentChannelUrl] = useState("");
   const conversationWrap = document.getElementsByClassName(
     "sendbird-app__conversation-wrap"
   )[0];
+
+  const context = useSendbirdStateContext();
+  const sdkInstance = sendBirdSelectors.getSdk(context);
+  const [selectedChannel, setSelectedChannel] = useState(null);
+
 
   const renderSettingsBar = () => {
     conversationWrap.style.marginRight = "318px";
@@ -39,6 +52,8 @@ function App() {
   const onChannelCreation = (channelUrl) => {
     setCurrentChannelUrl(channelUrl);
     setShowCreateChannelModal(false);
+    sdkInstance.groupChannel.refresh()
+
   }
 
 
@@ -60,15 +75,16 @@ function App() {
               ></path>
             </svg>
           </button>
-          <SBChannelList
+          {showChannelList && <SBChannelList
             queries={query}
             onChannelSelect={(channel) => {
               if (channel && channel.url) {
                 setCurrentChannelUrl(channel.url);
               }
             }}
-          />
+          />}
         </div>
+        <button onClick={() => { setShowChannelList(!showChannelList) }}>Toggle channel list</button>
         <div className="sendbird-app__conversation-wrap">
           <SBConversation
             channelUrl={currentChannelUrl}

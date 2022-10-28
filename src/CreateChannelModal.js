@@ -16,8 +16,8 @@ function CreateChannelModal(props) {
   const createChannel = (e) => {
 
     const createChannel = async () => {
+      // uncomment below line when running locally
       // const res = await fetch('http://localhost:7001/channel', {
-
       const res = await fetch('https://chatsamples.com/acl/channel', {
         method: 'POST',
         headers: {
@@ -37,8 +37,8 @@ function CreateChannelModal(props) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        // uncomment below line when running locally
         // const res = await fetch('http://localhost:7001/users');
-
         const res = await fetch('https://chatsamples.com/acl/users');
         const jsonResponse = await res.json();
         console.log(jsonResponse.users);
@@ -100,11 +100,11 @@ function CreateChannelModal(props) {
           </FormGroup>
         </div>
         <Stack spacing={2} direction="row" className="button-container">
-              <Button variant="contained" onClick={createChannel}>Submit</Button>
-              <Button variant="outlined" onClick={closeForm}>
-                Cancel
-              </Button>
-            </Stack>
+          <Button variant="contained" onClick={createChannel}>Submit</Button>
+          <Button variant="outlined" onClick={closeForm}>
+            Cancel
+          </Button>
+        </Stack>
       </div>
     </div>
   );
