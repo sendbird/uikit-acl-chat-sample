@@ -3,7 +3,7 @@ const SendbirdPlatformSdk = require('sendbird-platform-sdk');
 const cors = require('cors');
 
 const APP_ID = process.env.APP_ID;
-const API_TOKEN = process.env.APP_ID;
+const API_TOKEN = process.env.API_TOKEN;
 
 const app = express();
 app.use(express.json());
@@ -13,7 +13,8 @@ app.get('/users', async (req, res) => {
     const { userId, sessionToken } = req.body;
     // this user data would come from a DB in a prod app
     // userID and sessionToken can be used ensure we return the correct user list for each request
-    const users = [{ name: 'a', id: '1' }, { name: 'b', id: '2' }, { name: 'c', id: '3' }]
+    // add these users via the Sendbird dashboard
+    const users = [{ name: 'James', id: 'James_1' }, { name: 'Michelle', id: 'Michelle_2' }, { name: 'Chris', id: 'Chris_3' }];
     res.status(200).send({ users });
 
 });
@@ -23,7 +24,8 @@ app.post('/channel', async (req, res) => {
 
     const gcCreateChannelData = new SendbirdPlatformSdk.GcCreateChannelData()
     gcCreateChannelData.user_ids = userIds;
-    gcCreateChannelData.name = "blah";
+    gcCreateChannelData.is_distinct = false;
+
 
     const opts = {
         'gcCreateChannelData': gcCreateChannelData
@@ -37,6 +39,7 @@ app.post('/channel', async (req, res) => {
         res.status(200).send({ data });
 
     } catch (e) {
+        console.log(e);
         res.status(400).send({ error: e });
 
     }

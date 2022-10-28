@@ -1,6 +1,7 @@
 {
   "name": "uikit-acl-chat-sample",
   "version": "0.1.0",
+  "homepage": "acl-demo",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
