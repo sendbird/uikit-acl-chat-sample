@@ -5,11 +5,6 @@
 .sendbird-channel-header__right-icon {
   display: none;
 }
-/* .create-channel-button{
-  position: absolute;
-    right: 16px;
-    top: 16px;
-} */
 .create-channel-button {
   width: 25px;
   height: 25px;
@@ -25,4 +20,81 @@
 .create-channel-button svg {
   width: 20px;
   height: 20px;
+}
+
+.bg-modal {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(62, 63, 63, 0.9);
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-create-channel {
+  width: 400px;
+  height: 400px;
+  background-color: var(--sendbird-light-background-50);
+  padding: 5px 20px 10px 20px;
+  position: absolute;
+}
+
+.create_channel_wrap {
+  width: 100%;
+  color: black;
+  font-family: var(--sendbird-font-family-default);
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  float: left;
+}
+
+.form_close_btn {
+  position: absolute;
+  top: 20px;
+  right: 14px;
+  font-size: 36px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+#create-channel-form-title {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+}
+
+.create-channel-member-count {
+  color: gray;
+}
+
+#user-information {
+  border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+#user-name {
+  position: relative;
+  bottom: 6px;
+}
+
+.profile-img {
+  margin-right: 5px;
+  height: auto;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.button-container {
+  padding-top: 100px;
 }

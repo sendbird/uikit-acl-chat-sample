@@ -5,6 +5,7 @@ import SBConversation from "@sendbird/uikit-react/Channel";
 import SBChannelList from "@sendbird/uikit-react/ChannelList";
 import SBChannelSettings from "@sendbird/uikit-react/ChannelSettings";
 import "@sendbird/uikit-react/dist/index.css";
+import CreateChannelModal from "./CreateChannelModal";
 
 function App() {
   const APP_ID = process.env.REACT_APP_APP_ID;
@@ -12,6 +13,7 @@ function App() {
   const NICKNAME = process.env.REACT_APP_NICKNAME;
   const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
   const [showSettings, setShowSettings] = useState(false);
+  const [showCreateChannelModal, setShowCreateChannelModal] = useState(false);
   const [currentChannelUrl, setCurrentChannelUrl] = useState("");
   const conversationWrap = document.getElementsByClassName(
     "sendbird-app__conversation-wrap"
@@ -26,6 +28,7 @@ function App() {
 
   const openCreateChannelModal = () =>{
     console.log('Open modal view')
+    setShowCreateChannelModal(true)
   }
  
   return (
@@ -37,6 +40,9 @@ function App() {
         accessToken={ACCESS_TOKEN}
       >
         <div className="sendbird-app__wrap">
+          {showCreateChannelModal && (
+              <CreateChannelModal setShowCreateChannelModal={setShowCreateChannelModal}/>
+          )}
           <div className="sendbird-app__channellist-wrap">
             <button className="create-channel-button" onClick={openCreateChannelModal}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
