@@ -1,17 +1,21 @@
-import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import SBConversation from "@sendbird/uikit-react/Channel";
 import SBChannelList from "@sendbird/uikit-react/ChannelList";
-import { ChannelListProvider } from "@sendbird/uikit-react/ChannelList/context";
 import SBChannelSettings from "@sendbird/uikit-react/ChannelSettings";
 import "@sendbird/uikit-react/dist/index.css";
 import CreateChannelModal from "./CreateChannelModal";
-import withSendbird from '@sendbird/uikit-react/withSendbird';
+import "./App.css";
 
-function App(props) {
+
+function App() {
   const USER_ID = "Bob_1";
-  console.log(props.stores.sdkStore)
-
+  const query = useMemo(() => {
+    return {
+      channelListQuery: {
+        includeEmpty: true
+      }
+    };
+  }, []);
 
   const [showSettings, setShowSettings] = useState(false);
   const [showCreateChannelModal, setShowCreateChannelModal] = useState(false);
@@ -37,18 +41,6 @@ function App(props) {
     setShowCreateChannelModal(false);
   }
 
-  if (!props.stores.sdkStore.initialized) {
-    return null;
-  }
-
-  const param = {};
-  param.includeEmpty = true;
-  param.limit = 1;
-
-  param.order = 'latest_last_message';
-
-  const channelListQuery = props.stores.sdkStore.sdk.groupChannel.createMyGroupChannelListQuery(param);
-  console.log(channelListQuery);
 
   return (
     <div className="App">
@@ -68,15 +60,14 @@ function App(props) {
               ></path>
             </svg>
           </button>
-          <ChannelListProvider queries={{ channelListQuery }}>
-            <SBChannelList
-              onChannelSelect={(channel) => {
-                if (channel && channel.url) {
-                  setCurrentChannelUrl(channel.url);
-                }
-              }}
-            />
-          </ChannelListProvider>
+          <SBChannelList
+            queries={query}
+            onChannelSelect={(channel) => {
+              if (channel && channel.url) {
+                setCurrentChannelUrl(channel.url);
+              }
+            }}
+          />
         </div>
         <div className="sendbird-app__conversation-wrap">
           <SBConversation
@@ -103,4 +94,4 @@ function App(props) {
   );
 }
 
-export default withSendbird(App);
+export default App;

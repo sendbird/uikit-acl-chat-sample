@@ -28,7 +28,6 @@ app.post('/channel', async (req, res) => {
 
     const gcCreateChannelData = new SendbirdPlatformSdk.GcCreateChannelData()
     gcCreateChannelData.user_ids = userIds;
-    gcCreateChannelData.is_distinct = false;
 
 
     const opts = {

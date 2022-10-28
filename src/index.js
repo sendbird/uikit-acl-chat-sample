@@ -7,11 +7,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 const APP_ID = "CC1C8E8D-CADA-44C5-A1CA-C6E4DF89BC17";
 const USER_ID = "Bob_1";
+const NICKNAME = "Bob";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <SBProvider
     appId={APP_ID}
     userId={USER_ID}
+    nickname={NICKNAME}
   >
     <React.StrictMode>
       <App />

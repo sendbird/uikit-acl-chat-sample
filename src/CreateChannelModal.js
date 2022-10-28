@@ -16,6 +16,8 @@ function CreateChannelModal(props) {
   const createChannel = (e) => {
 
     const createChannel = async () => {
+      // const res = await fetch('http://localhost:7001/channel', {
+
       const res = await fetch('https://chatsamples.com/acl/channel', {
         method: 'POST',
         headers: {
@@ -35,6 +37,8 @@ function CreateChannelModal(props) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        // const res = await fetch('http://localhost:7001/users');
+
         const res = await fetch('https://chatsamples.com/acl/users');
         const jsonResponse = await res.json();
         console.log(jsonResponse.users);
