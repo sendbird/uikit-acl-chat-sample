@@ -22,7 +22,6 @@ function App() {
     };
   }, []);
 
-  const [showChannelList, setShowChannelList] = useState(true);
 
 
   const [showSettings, setShowSettings] = useState(false);
@@ -34,7 +33,6 @@ function App() {
 
   const context = useSendbirdStateContext();
   const sdkInstance = sendBirdSelectors.getSdk(context);
-  const [selectedChannel, setSelectedChannel] = useState(null);
 
 
   const renderSettingsBar = () => {
@@ -75,16 +73,15 @@ function App() {
               ></path>
             </svg>
           </button>
-          {showChannelList && <SBChannelList
+          <SBChannelList
             queries={query}
             onChannelSelect={(channel) => {
               if (channel && channel.url) {
                 setCurrentChannelUrl(channel.url);
               }
             }}
-          />}
+          />
         </div>
-        <button onClick={() => { setShowChannelList(!showChannelList) }}>Toggle channel list</button>
         <div className="sendbird-app__conversation-wrap">
           <SBConversation
             channelUrl={currentChannelUrl}
