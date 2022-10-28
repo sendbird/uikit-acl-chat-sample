@@ -36,19 +36,14 @@ function CreateChannelModal(props) {
     const fetchUsers = async () => {
       try {
         const res = await fetch('https://chatsamples.com/acl/users');
-
         const jsonResponse = await res.json();
         console.log(jsonResponse.users);
-
         setUsers(jsonResponse.users);
-
       } catch (error) {
         console.log(error);
       }
     }
-
     fetchUsers();
-
   }, []);
 
   const closeForm = () => {
@@ -57,11 +52,10 @@ function CreateChannelModal(props) {
 
   const selectedCount = (e) => {
     let id = e.target.id;
-    // members.push(id)
-    // console.log('partiticipants=', members.length)
     console.log("e=", e.target.id);
     if (!participants.includes(id)) {
       const updatedParticipants = [...participants, id];
+      console.log('update=', updatedParticipants)
       setParticipants(updatedParticipants);
       setCount(updatedParticipants.length);
     } else {
@@ -80,7 +74,7 @@ function CreateChannelModal(props) {
           +
         </div>
         <h3 id="create-channel-form-title">New channel</h3>
-        <h5 className="create-channel-member-count">{count} selected</h5>
+        <h5 className="create-channel-member-count">{count < 1? 0: count-1} selected</h5>
         <div className="create_channel_wrap">
           <FormGroup>
 

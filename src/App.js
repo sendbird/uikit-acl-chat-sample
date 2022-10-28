@@ -1,26 +1,15 @@
 import "./App.css";
 import React, { useState } from "react";
-import SBProvider from "@sendbird/uikit-react/SendbirdProvider";
 import SBConversation from "@sendbird/uikit-react/Channel";
 import SBChannelList from "@sendbird/uikit-react/ChannelList";
 import { ChannelListProvider } from "@sendbird/uikit-react/ChannelList/context";
-import sendbirdSelectors from "@sendbird/uikit-react/sendbirdSelectors";
 import SBChannelSettings from "@sendbird/uikit-react/ChannelSettings";
 import "@sendbird/uikit-react/dist/index.css";
 import CreateChannelModal from "./CreateChannelModal";
-import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import withSendbird from '@sendbird/uikit-react/withSendbird';
 
-
-
 function App(props) {
-
-
   const USER_ID = "Bob_1";
-
-  // const context = useSendbirdStateContext();
-  // const sdkInstance = sendbirdSelectors.getSdk(context);
-  // console.log(sdkInstance);
   console.log(props.stores.sdkStore)
 
 
