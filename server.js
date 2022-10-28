@@ -14,7 +14,11 @@ app.get('/users', async (req, res) => {
     // this user data would come from a DB in a prod app
     // userID and sessionToken can be used ensure we return the correct user list for each request
     // add these users via the Sendbird dashboard
-    const users = [{ name: 'James', id: 'James_1' }, { name: 'Michelle', id: 'Michelle_2' }, { name: 'Chris', id: 'Chris_3' }];
+    const users = [{ "name": "Alex Chin", "id": "1", "image": "https://t4.ftcdn.net/jpg/03/02/94/53/360_F_302945354_dqIiUiITKpard7fBVKDLtffIqnkDbyo4.jpg" }, { "name": "Patricia Garcia", "id": "2", "image": "https://www.wallisphoto.com/IMAGES/2019/Women-Headshots/real-estate-agent-headshot.jpg" }, { "name": "Carlos Davis", "id": "3", "image": "https://thumbs.dreamstime.com/b/headshot-portrait-black-man-posing-studio-smiling-african-american-millennial-tshirt-isolated-grey-background-happy-male-153882352.jpg" }, { "name": "Claire Smith", "id": "4", "image": "https://www.davidbroadway.com.au/images/porftolio/corporate-portraits/210408-2802e.JPG" }, {
+        "name": "Robert Jones", "id": "5", "image": "https://thumbs.dreamstime.com/b/headshot-handsome-bearded-man-smiling-standing-against-white-background-headshot-handsome-bearded-man-smiling-standing-202880713.jpg"
+    }, {
+        "name": "Margo Williams", "id": "6", "image": "https://kpstudios.com/wp-content/uploads/2022/02/professional-headshots_kpstudios01.jpg"
+    }]
     res.status(200).send({ users });
 
 });

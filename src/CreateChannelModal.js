@@ -35,7 +35,7 @@ function CreateChannelModal(props) {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch('https://chatsamples.com/acl/users');
+        const res = await fetch('http://localhost:7001/users');
         const jsonResponse = await res.json();
         console.log(jsonResponse.users);
         setUsers(jsonResponse.users);
@@ -74,9 +74,9 @@ function CreateChannelModal(props) {
           +
         </div>
         <h3 id="create-channel-form-title">New channel</h3>
-        <h5 className="create-channel-member-count">{count < 1? 0: count-1} selected</h5>
+        <h5 className="create-channel-member-count">{count < 1 ? 0 : count - 1} selected</h5>
         <div className="create_channel_wrap">
-          <FormGroup>
+          <FormGroup className="user-select-form">
 
             {users.map((user) => {
               return (
@@ -85,7 +85,7 @@ function CreateChannelModal(props) {
                   id="user-information"
                   label={
                     <>
-                      <img src="https://img.freepik.com/free-photo/headshot-pleased-hipster-guy-dressed-maroon-t-shirt_176532-8161.jpg?w=2000" key="1" alt="profile-img" className="profile-img" />
+                      <img src={user.image} key="1" alt="profile-img" className="profile-img" />
                       <span id="user-name" >{user.name}</span>
 
                     </>
@@ -94,13 +94,13 @@ function CreateChannelModal(props) {
               )
             })}
 
-            <Stack spacing={2} direction="row" className="button-container">
-              <Button variant="contained" onClick={createChannel}>Submit</Button>
-              <Button variant="outlined" onClick={closeForm}>
-                Cancel
-              </Button>
-            </Stack>
           </FormGroup>
+          <Stack spacing={2} direction="row" className="button-container">
+            <Button variant="contained" onClick={createChannel}>Submit</Button>
+            <Button variant="outlined" onClick={closeForm}>
+              Cancel
+            </Button>
+          </Stack>
         </div>
       </div>
     </div>

@@ -96,5 +96,11 @@
 }
 
 .button-container {
-  padding-top: 100px;
+  padding-top: 10px;
+}
+
+.user-select-form{
+  flex-wrap: nowrap!important;
+  height: 230px;
+  overflow-y: scroll;
 }
