@@ -50,10 +50,10 @@ function App() {
   const onChannelCreation = (channelUrl) => {
     setCurrentChannelUrl(channelUrl);
     setShowCreateChannelModal(false);
-    sdkInstance.groupChannel.refresh()
 
   }
 
+  console.log(sdkInstance);
 
   return (
     <div className="App">

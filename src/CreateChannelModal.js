@@ -18,11 +18,13 @@ function CreateChannelModal(props) {
     const createChannel = async () => {
       // uncomment below line when running locally
       // const res = await fetch('http://localhost:7001/channel', {
+
       const res = await fetch('https://chatsamples.com/acl/channel', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        // in production we will also want to pass the sendbird user id and access token in order to secure the endpoint
         body: JSON.stringify({ userIds: participants }),
       });
       const jsonResponse = await res.json();
@@ -39,6 +41,8 @@ function CreateChannelModal(props) {
       try {
         // uncomment below line when running locally
         // const res = await fetch('http://localhost:7001/users');
+
+        // in production we will also want to pass the sendbird user id and access token in order to secure the endpoint and return correct user list for this user
         const res = await fetch('https://chatsamples.com/acl/users');
         const jsonResponse = await res.json();
         console.log(jsonResponse.users);
