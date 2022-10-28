@@ -54,6 +54,9 @@
   line-height: 1.43;
   letter-spacing: normal;
   float: left;
+  overflow-x:hidden;  
+  overflow-y:auto; 
+  height: 200px;
 }
 
 .form_close_btn {
@@ -90,18 +93,13 @@
 
 .profile-img {
   margin-right: 5px;
-  padding:5px;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
+  object-fit: cover ;
   border-radius: 50%;
 }
 
 .button-container {
-  padding-top: 10px;
-}
-
-.user-select-form{
-  flex-wrap: nowrap!important;
-  height: 230px;
-  overflow-y: scroll;
+  padding-top: 30px;
+  clear: both;
 }
